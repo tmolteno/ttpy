@@ -57,11 +57,12 @@ def configuration(parent_package='', top_path=None):
         ignore_setup_xxx_py=True,
         assume_default_configuration=True,
         delegate_options_to_subpackages=True,
-        quiet=False,
+        quiet=False
     )
 
     config.add_library('print_lib', sources=[join(PRINT_DIR, x) for x in PRINT_SRC])
-    config.add_library('mytt', sources=[join(TTFORT_DIR, x) for x in TTFORT_SRC])
+    config.add_library('mytt', 
+                       sources=[join(TTFORT_DIR, x) for x in TTFORT_SRC], extra_compile_args = ["-w -fallow-argument-mismatch"])
 
     config.add_subpackage('core')
     config.add_subpackage('amen')

@@ -31,6 +31,10 @@ class matrix(object):
             return
 
         if isinstance(a, _np.ndarray):
+            if (n is not None) and (m is not None):
+                # The dimensions have been specified, so reshape the input
+                # array first.
+                a = a.reshape(n + m)
             d = a.ndim // 2
             p = a.shape
             self.n = _np.array(p[:d], dtype=_np.int32)
